@@ -1,5 +1,6 @@
 from keras.models import load_model
 from keras.preprocessing import image
+from flask import current_app
 import tensorflow as tf
 import numpy as np
 import sys
@@ -27,6 +28,7 @@ def predict(img_file):
 	img = image.img_to_array(img)
 	img = np.array(img, dtype='uint8')
 	faces = face_cascade.detectMultiScale(img, 1.3, 5)
+	current_app.logger.info('Found %s face(s) using face_cascade.' % len(faces)) 
 	if len(faces) == 1:
 		(x,y,w,h) = faces[0]
 		img = img[y:y+h, x:x+w]
@@ -47,9 +49,9 @@ def predict(img_file):
 	results = decode_predictions(predictions)
 
 	if results[0][0][0] == 0:
-		msg = 'It is an \"Angry\"" face!'
+		msg = 'It is an \"Angry\" face!'
 	else:
-		msg = 'It is a \"%s\"" face!' % results[0][0][1]
+		msg = 'It is a \"%s\" face!' % results[0][0][1]
 	predictions = [{'label': label, 'description': description, 'probability': probability * 100.0}
                     for label, description, probability in results[0]]
 	return msg, predictions
