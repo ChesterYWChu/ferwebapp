@@ -99,3 +99,10 @@ ENV/
 
 # mypy
 .mypy_cache/
+
+# sublime
+*.sublime-project
+sftp-config.json
+
+# MacOS
+*.DS_Store
