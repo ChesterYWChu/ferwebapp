@@ -15,6 +15,8 @@ app.logger.setLevel(logging.DEBUG)
 
 @app.route('/', methods=['POST'])
 def predict():
+	predictions=[]
+	msg=''
 	data = {}
 	try:
 		data = request.get_json()['data']

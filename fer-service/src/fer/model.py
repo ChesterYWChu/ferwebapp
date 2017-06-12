@@ -28,16 +28,15 @@ def predict(img_file):
 	img = image.img_to_array(img)
 	img = np.array(img, dtype='uint8')
 	faces = face_cascade.detectMultiScale(img, 1.3, 5)
-	current_app.logger.info('Found %s face(s) using face_cascade.' % len(faces)) 
-	if len(faces) == 1:
-		(x,y,w,h) = faces[0]
-		img = img[y:y+h, x:x+w]
-	elif len(faces) == 0:
+	current_app.logger.info('Found %s face(s) by face_cascade.' % len(faces))
+
+	if len(faces) == 0:
 		msg = 'No face is found!'
 		return msg, predictions
 	else:
-		msg = 'Too many(%d) faces are found!' % len(faces)
-		return msg, predictions
+		faces = sorted(faces, key=lambda face: face[3], reverse=True)
+		(x,y,w,h) = faces[0]
+		img = img[y:y+h, x:x+w]
 
 	x = cv2.resize(img, (img_width, img_height))
 	x = x.reshape((1, 48, 48, 1))

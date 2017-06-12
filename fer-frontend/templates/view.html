@@ -15,7 +15,7 @@
     {% if predictions %}
       <ul class="list-unstyled">
       {% for prediction in predictions %}
-        <li>{{prediction.description}} <b>{{prediction.probability}}%</b></li>
+        <li>{{prediction.description}} <b>{{'%0.2f' % prediction.probability}}%</b></li>
       {% endfor %}
       </ul>
     {% endif %}
