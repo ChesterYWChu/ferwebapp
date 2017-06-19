@@ -12,10 +12,10 @@ A face expression recognition web app powered by Deep Learning model training te
 6. Surprise
 7. Neutral
 
-![](http://gdurl.com/BwEf)
+![](http://gdurl.com/QsKL)
 
 ### Demo Page Link
-[https://fer-project-170115.appspot.com/](https://fer-project-170115.appspot.com/)
+[http://chesterhill.net/](http://chesterhill.net/)
 
 ### Used Tools
 * Flask
@@ -23,9 +23,8 @@ A face expression recognition web app powered by Deep Learning model training te
 * TensorFlow
 * OpenCV
 * Docker
-* Google App Engine
-* Google Compute Engine
-* Google Bucket Storage
+* Google Cloud
+* Firebase
 * Nginx
 * Gunicorn
 * Supervisord
