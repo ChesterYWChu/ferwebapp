@@ -31,7 +31,7 @@ def predict(img_file):
 	current_app.logger.info('Found %s face(s) by face_cascade.' % len(faces))
 
 	if len(faces) == 0:
-		msg = 'No face is found!'
+		msg = 'No face was found!'
 		return msg, predictions
 	else:
 		faces = sorted(faces, key=lambda face: face[3], reverse=True)

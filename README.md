@@ -12,10 +12,10 @@ A face expression recognition web app powered by Deep Learning model training te
 6. Surprise
 7. Neutral
 
+![](http://gdurl.com/BwEf)
+
 ### Demo Page Link
 [https://fer-project-170115.appspot.com/](https://fer-project-170115.appspot.com/)
-
-![](http://gdurl.com/BwEf)
 
 ### Used Tools
 * Flask
@@ -104,8 +104,4 @@ The app is consist of two components. A frontend server hosted in a Google App E
 The frontend server responsible for uploading user submitted images to a Google Bucket Storage, querying the recognition service server for the prediction of the image and showing the image with the prediction results to the user.
 
 ### Recognition Service Server
-The server is hosted in a standard google compute engine, n1-standard-1. The incoming network traffic to its 80 port will be redirected into the docker container running on it. The container with a pre-tested running environment image installed will take the http request as a input, decode the image from the payload, pre-process the image, make a prediction base on the image using the pre-trained model, and finally return the prediction results back as a JSON string.
-
-
-
-
+The server is hosted in a standard google compute engine, n1-standard-1. The incoming network traffic to its 80 port will be redirected into the docker container running on it. The container with a locally tested running environment image installed will take the http request as a input, decode the image from the payload, make a prediction base on the image using the pre-trained model, and finally return the prediction results back as a JSON string.

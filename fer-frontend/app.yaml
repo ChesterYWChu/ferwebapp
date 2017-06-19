@@ -3,5 +3,33 @@ api_version: 1
 threadsafe: true
 module: default
 handlers:
+
 - url: /.*
   script: main.app
+
+libraries:
+- name: pycrypto
+  version: "latest"
+# - name: MySQLdb
+#   version: "latest"
+
+# runtime: python
+# env: flex
+# entrypoint: gunicorn -b :$PORT main:app
+# api_version: 1
+# runtime_config:
+#     python_version: 2
+
+# beta_settings:
+#     cloud_sql_instances: "fer-project-170115:asia-east1:fer-sql-instance"
+# env_variables:
+#    CLOUDSQL_CONNECTION_NAME: fer-project-170115:asia-east1:fer-sql-instance
+#    CLOUDSQL_USER: root
+#    CLOUDSQL_PASSWORD: novirus
+   # GOOGLE_APPLICATION_CREDENTIALS: /Users/yourway_chu/repos/fer-owner-account-329d32161b80.json
+
+   # SQLALCHEMY_DATABASE_URI: >-
+   #    mysql+pymysql://root:novirus@/fer?unix_socket=/cloudsql/fer-project-170115:asia-east1:fer-sql-instance
+
+
+

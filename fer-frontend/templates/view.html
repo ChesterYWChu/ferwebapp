@@ -1,24 +1,28 @@
 {% extends "base.html" %}
 
 {% block content %}
-
-<h3>{{msg}}</h3>
-<div class="media">
-  <div class="media-left">
-    {% if image_url %}
-      <img class="book-image" src="{{image_url}}" style="max-width:50%; height:auto">
-    {% else %}
-      <img class="book-image" src="http://placekitten.com/g/128/192">
-    {% endif %}
-  </div>
-  <div>
-    {% if predictions %}
-      <ul class="list-unstyled">
-      {% for prediction in predictions %}
-        <li>{{prediction.description}} <b>{{'%0.2f' % prediction.probability}}%</b></li>
-      {% endfor %}
-      </ul>
-    {% endif %}
+<div class="media alert alert-info">
+  <div class="row col-md-offset-3">
+    <div class="col-md-4 col-xs-6">
+      {% if image_url %}
+        <img class="image-object img-responsive" src="{{image_url}}">
+      {% endif %}
+    </div>
+    <div class="col-md-5 col-xs-6">
+      {% if predictions %}
+        <h4 class="media-heading">{{msg}}</h4>
+        {% for prediction in predictions %}
+          {{prediction.description}} <b>{{'%0.2f' % prediction.probability}}%</b><br/>
+        {% endfor %}
+        </ul>
+      {% endif %}
+      <input type="button" class="btn btn-info" style="margin-top: 5px;" value="Retry" onclick="location.href='/'">
+    </div>
   </div>
 </div>
 {% endblock %}
+
+
+
+
+

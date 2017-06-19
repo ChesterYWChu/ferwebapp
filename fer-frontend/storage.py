@@ -7,10 +7,11 @@ import cloudstorage as gcs
 from werkzeug import secure_filename
 from werkzeug.exceptions import BadRequest
 from google.appengine.api import app_identity
+import logging
 
 bucket = app_identity.get_default_gcs_bucket_name()
 write_retry_params = gcs.RetryParams(backoff_factor=1.1)
-
+logger = logging.getLogger('')
 
 def _check_extension(filename, allowed_extensions):
     if ('.' not in filename or
@@ -44,3 +45,11 @@ def upload_file(file_stream, filename, content_type):
     gcs_file.close()
 
     return filename
+
+def list_recent_objects(number):
+    objects = gcs.listbucket('/' + bucket)
+    recent_objs = sorted(objects, key=lambda o: o.st_ctime, reverse=True)[0:number]
+    logger.info('recent objects: %s' % recent_objs)
+    return recent_objs
+
+
